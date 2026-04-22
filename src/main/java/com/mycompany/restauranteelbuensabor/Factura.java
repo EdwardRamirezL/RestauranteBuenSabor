@@ -46,10 +46,12 @@ public class Factura {
     }
 
     public double calcularIVA() {
+        // El IVA se calcula sobre el subtotal ya descontado, segun normativa DIAN
         return (calcularSubtotal() - calcularDescuento()) * TASA_IVA;
     }
 
     public double calcularPropina() {
+        // La propina aplica sobre el total con IVA incluido, no sobre el subtotal
         double totalConIva = calcularSubtotal() - calcularDescuento() + calcularIVA();
         if (totalConIva > UMBRAL_PROPINA) {
             return totalConIva * TASA_PROPINA;
