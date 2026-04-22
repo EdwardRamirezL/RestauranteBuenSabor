@@ -105,7 +105,7 @@ public class RestauranteElBuenSabor {
                 if (Utilidades.hayProductosEnPedido()) {
                     double totalFactura = 0;
 // procesar pedido y generar total
-                    totalFactura = CalculadorFactura.calcularTotalFactura();
+                    totalFactura = CalculadorFactura.calcularTotal();
                     valorTemporalEntero = (int) totalFactura;
                     textoInformativo = "Total calculado: $" + valorTemporalEntero;
                     numeroMesa = totalFactura;
@@ -141,13 +141,10 @@ public class RestauranteElBuenSabor {
             } else {
 // opcion no reconocida
                 System.out.println("Opcion no valida. Seleccione entre 0 y 5.");
-                Scanner sc2 = new Scanner(System.in);
                 intentosInvalidos = intentosInvalidos + 1;
                 if (intentosInvalidos > 3) {
                     System.out.println("Demasiados intentos invalidos.");
                     intentosInvalidos = 0;
-// limpiar buffer con segundo scanner - innecesario
-                    String s2 = sc2.hasNextLine() ? sc2.nextLine() : "";
                 }// fin if intentosInvalidos>3
             }// fin if-else opcionMenu
         }// fin while
